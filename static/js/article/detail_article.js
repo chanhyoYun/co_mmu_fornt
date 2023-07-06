@@ -1,11 +1,9 @@
 window.onload = async function detailArticle() {
     const user = localStorage.getItem("payload")
     const user_id = user.split(':')[5].slice(0, -1);
-    console.log("user_id pk : " + user_id)
 
     const urlParams = new URL(location.href).searchParams;
     const article_id = urlParams.get('id');
-    console.log("article_id : " + article_id)
 
     // =====================유저 정보 받아오기===========================
     const response_get_user = await fetch('http://127.0.0.1:8000/users/profile/'+user_id+'/', {
@@ -101,7 +99,6 @@ window.onload = async function detailArticle() {
         }
     })
     //=====================좋아요 보여주는 부분===========================
-    console.log(user_id in response_json['likes'])
     if (user_id in response_json['likes']) {
         const likes_button_icon = document.getElementById("likes_button_icon")
         likes_button_icon.setAttribute("class", "bi bi-balloon-heart-fill")
@@ -118,7 +115,6 @@ window.onload = async function detailArticle() {
 async function handlecomment() {
     const urlParams = new URL(location.href).searchParams;
     const article_id = urlParams.get('id');
-    console.log("article_id : " + article_id)
 
 
     const comment = document.getElementById("comment").value;
@@ -201,12 +197,10 @@ function handleLike() {
             if(data["result"] === "like") {
                 likes_button_icon.setAttribute("class", "bi bi-balloon-heart-fill")
                 likes_button_icon.setAttribute("style", "color:red;")
-                console.log(data)
             }
             else {
                 likes_button_icon.setAttribute("class", "bi bi-balloon-heart")
                 likes_button_icon.setAttribute("style", "color:black;")
-                console.log(data)
             }
             article_likes_count.innerText = `좋아요 ${data['count']}개`
         }

@@ -6,7 +6,6 @@ async function navOnload() {
     // 로그인 안되어 있으면 회원가입, 로그인 버튼 띄우기
     const payload = localStorage.getItem("payload")
     if (payload === null) {
-        console.log("통과")
         const login_btn = document.getElementById("login_btn")
         login_btn.setAttribute("style", "display: block;")
         const sign_btn = document.getElementById("sign_btn")

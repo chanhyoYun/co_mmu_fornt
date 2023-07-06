@@ -3,7 +3,6 @@ window.onload = async function loadMainPage() {
         method:"GET"
     })
     response_json = await response.json()
-    console.log(response_json)
 
     const articles_all = document.getElementById("articles_all")
     response_json.forEach(article => {
